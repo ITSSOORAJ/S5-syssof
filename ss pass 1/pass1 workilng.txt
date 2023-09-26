@@ -1,0 +1,12 @@
+>It opens the input file and the output file.
+>It reads the first line of the input file, which contains the start address and the first instruction.
+>If the first instruction is START, the program sets the current address to the start address.
+>The program then enters a loop, which reads each instruction from the input file and calculates the amount of space that it takes up in memory.
+>If the instruction is a machine language instruction, the program adds 3 bytes to the current address.
+>If the instruction is a WORD directive, the program adds 3 bytes to the current address.
+>If the instruction is a RESW directive, the program adds 3 times the operand to the current address.
+>If the instruction is a BYTE directive, the program adds 1 byte to the current address if the operand starts with X, or the length of the operand minus 2 bytes otherwise.
+>If the instruction is a RESB directive, the program adds the operand to the current address.
+>The loop terminates when the end of the input file is reached.
+>The program then calculates the length of the program by subtracting the start address from the current address.
+>The program then prints the length of the program to the output file and closes the input and output files.
