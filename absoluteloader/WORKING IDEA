@@ -1,0 +1,34 @@
+            ************************       ABSOLUTE LOADER       **********************
+An absolute loader is a type of loader that loads a program into memory at a specific, predefined address. 
+This address is typically determined by the programmer or assembler and is stored in the object file. 
+The absolute loader simply copies the object code from the object file into memory at the specified address.
+
+            **********************         WORKING               **********************
+
+This code aims to process an object program file (presumably named "objp.txt") and extract information about the program, including its name and object code instructions.
+It also displays the object code instructions along with their corresponding addresses.
+
+Step-by-Step Explanation:
+
+$File Opening and Name Extraction:
+
+The code opens the file "objp.txt" in read mode using the fopen() function.
+It then reads the first line of the file into the rdr buffer using fscanf().
+The code iterates through the rdr buffer from index 2 (skipping the first two characters) until it encounters a '^' character.
+As it iterates, it copies each character from rdr to the name buffer, effectively extracting the program's name.
+Finally, it adds a null terminator ('\0') to the name buffer and prints the program's name.
+
+
+$Object Code Processing:
+
+The code enters a loop that continues until the end of the file (using feof()) is reached.
+Inside the loop, it reads the next line of the file into the rdr buffer using fscanf().
+It then checks if the first character of the rdr buffer is 'T'. If so, it assumes it's an object code record and proceeds to process it.
+Inside the object code processing loop, it extracts the starting address of the object code instructions from the rdr buffer into the staddress variable using atoi().
+It then iterates through the rdr buffer starting from index 12 (skipping the first 12 characters) until it encounters a '$' character, indicating the end of the object code record.
+Inside this iteration, it checks if the current character is not '^' (indicating a valid instruction). If so, it extracts the current and next characters as the instruction and prints them along with their corresponding address (incremented by 2 for each instruction).
+
+$End of File and Exit:
+
+After processing all object code records, the loop exits, and the code checks if the first character of the current rdr buffer is 'E'. If so, it assumes it's the end of the file marker and prints a success message.
+It then exits the program using exit(0).
